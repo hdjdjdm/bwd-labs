@@ -1,4 +1,4 @@
-function showTemporaryText(imageElement, text, position) {
+export function showTemporaryText(imageElement, text, position) {
     const tooltip = document.createElement('div');
     tooltip.classList.add('tooltip');
     tooltip.textContent = text;
@@ -6,6 +6,7 @@ function showTemporaryText(imageElement, text, position) {
     document.body.appendChild(tooltip);
 
     const rect = imageElement.getBoundingClientRect();
+    console.log('HAH');
     
     if (position === 'right') {
         tooltip.style.left = `${rect.right + window.scrollX + 10}px`;
@@ -19,3 +20,4 @@ function showTemporaryText(imageElement, text, position) {
         tooltip.remove();
     }, 2000);
 }
+window.showTemporaryText = showTemporaryText;

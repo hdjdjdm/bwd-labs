@@ -1,4 +1,6 @@
-function deleteTask(index) {
+import { loadTasks } from "./loadTasks";
+
+export function deleteTask(index) {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.splice(index, 1);
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -31,7 +33,7 @@ if (addTaskForm) {
     addTaskForm.addEventListener('submit', addTask);
 }
 
-function toggleCheck(event) {
+export function toggleCheck(event) {
     const index = event.target.dataset.index;
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     
@@ -49,15 +51,17 @@ function toggleCheck(event) {
 
 let draggedTaskIndex;
 
-function allowDrop(event) {
+export function allowDrop(event) {
     event.preventDefault();
 }
+window.allowDrop = allowDrop;
 
-function drag(event) {
+export function drag(event) {
     draggedTaskIndex = event.target.dataset.index;
 }
+window.drag = drag;
 
-function drop(event) {
+export function drop(event) {
     event.preventDefault();
 
     const targetColumn = event.target.closest('td').id;
@@ -71,3 +75,5 @@ function drop(event) {
         loadTasks();
     }
 }
+window.drop = drop;
+

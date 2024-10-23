@@ -1,7 +1,11 @@
-document.querySelector('nav button').addEventListener('click', function() {
-    const sidebar = document.querySelector('.sidebar');
-    const menuIcon = document.querySelector('nav button #svg');
+const navbutton = document.querySelector('nav button')
 
-    sidebar.classList.toggle('visible');
-    menuIcon.classList.toggle('rotate');
-});
+if (navbutton) {
+    navbutton.addEventListener('click', function() {
+        const sidebar = document.querySelector('.sidebar');
+        const menuIcon = document.querySelector('nav button #svg');
+
+        sidebar.classList.toggle('visible');
+        menuIcon.classList.toggle('rotate');
+    });
+}

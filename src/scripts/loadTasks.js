@@ -1,6 +1,16 @@
-window.onload = loadTasks;
+import { deleteTask, drag, toggleCheck } from "./taskManager";
 
-function loadTasks() {
+window.onload = () => {
+    const taskList = document.getElementById('taskList');
+    const inProgressList = document.getElementById('inProgressList');
+    const completedList = document.getElementById('completedList');
+
+    if (taskList && inProgressList && completedList) {
+        loadTasks();
+    }
+};
+
+export function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const taskLists = {
         taskList: document.getElementById('taskList'),
@@ -38,17 +48,27 @@ function createTaskItem(task, index) {
 function createCheckbox(task, index) {
     const checkbox = document.createElement('label');
     checkbox.className = 'customCheckbox';
-    checkbox.innerHTML = `
-        <input type="checkbox" ${task.isChecked ? 'checked' : ''} 
-            data-index="${index}" onchange="toggleCheck(event)" />
-        <span class="checkboxImage">
-            <img class="empty" src="./assets/icons/cb_empty.svg" alt="cb_empty" id="svg" />
-            <img class="hover" src="./assets/icons/cb_hover.svg" alt="cb_hover" id="svg" />
-            <img class="complete" src="./assets/icons/cb_complete.svg" alt="cb_complete" id="svg" />
-        </span>
+
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.checked = task.isChecked;
+    input.dataset.index = index;
+    input.addEventListener('change', toggleCheck);
+
+    const span = document.createElement('span');
+    span.className = 'checkboxImage';
+    span.innerHTML = `
+        <img class="empty" src="./assets/icons/cb_empty.svg" alt="cb_empty" id="svg" />
+        <img class="hover" src="./assets/icons/cb_hover.svg" alt="cb_hover" id="svg" />
+        <img class="complete" src="./assets/icons/cb_complete.svg" alt="cb_complete" id="svg" />
     `;
+
+    checkbox.appendChild(input);
+    checkbox.appendChild(span);
+
     return checkbox;
 }
+
 
 function createTextSpan(text) {
     const textSpan = document.createElement('span');
