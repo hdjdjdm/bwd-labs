@@ -1,0 +1,65 @@
+:root {
+    --fc-border-color: var(--main-color);
+    --fc-daygrid-event-dot-width: 5px;
+
+    --fc-button-bg-color: white;
+    --fc-button-text-color: var(--main-color);
+    --fc-button-border-color: var(--main-color);
+    --fc-button-hover-bg-color: white;
+    --fc-button-active-bg-color: white;
+}
+
+main #calendar {
+    height: 100%;
+    width: 100%;
+    background-color: var(--main-color);
+    border-radius: 20px;
+    font-family: 'Montserrat Regular', sans-serif;
+    font-size: 22px;
+    padding: 15px;
+}
+
+main .showCalendar {
+    display: flex;
+}
+
+.fc-header-toolbar button {
+    font-size: 22px !important;
+}
+
+.fc-col-header-cell {
+    border: 1px solid white !important;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: white !important;
+}
+
+.fc td {
+    border-right: 1px solid white !important;
+}
+
+.fc-daygrid-day-top,
+.fc-daygrid-day-events {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .fc-header-toolbar button {
+        font-size: 18px !important;
+    }
+
+    .fc-toolbar-chunk .fc-toolbar-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 425px) {
+    .fc-header-toolbar button {
+        font-size: 14px !important;
+    }
+
+    .fc-toolbar-chunk .fc-toolbar-title {
+        font-size: 18px;
+    }
+}

@@ -1,3 +1,4 @@
+import { closeAddTaskModal } from "./addtask_modal";
 import { loadTasks } from "./loadTasks";
 
 export function deleteTask(index) {
@@ -7,30 +8,44 @@ export function deleteTask(index) {
     loadTasks();
 }
 
-function addTask(event) {
+export function addTask(event) {
     event.preventDefault();
     const taskName = document.getElementById('taskName').value.trim();
+    let taskDate = document.getElementById('taskDate').value;
+    let taskEndDate = document.getElementById('taskEndDate').value;
+
     if (taskName === '') {
         alert('Пожалуйста, введите название задачи!');
         return;
     }
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
+    if (!taskDate) {
+        const today = new Date();
+        taskDate = today.toISOString().substring(0, 10);
+    }
+
+    if (!taskEndDate || taskEndDate < taskDate) {
+        taskEndDate = taskDate;
+    }
+
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     const taskExists = tasks.some(task => task.text.toLowerCase() === taskName.toLowerCase());
 
     if (taskExists) {
         alert('Задача с таким названием уже существует!');
     } else {
-        tasks.push({ text: taskName, isChecked: false, column: 'taskList' });
+        tasks.push({
+            text: taskName,
+            date: taskDate,
+            endDate: taskEndDate,
+            isChecked: false,
+            column: 'taskList'
+        });
         localStorage.setItem('tasks', JSON.stringify(tasks));
-
-        window.location.href = 'tasks.html';
     }
-}
 
-const addTaskForm = document.getElementById('addTaskForm');
-if (addTaskForm) {
-    addTaskForm.addEventListener('submit', addTask);
+    closeAddTaskModal();
+    loadTasks();
 }
 
 export function toggleCheck(event) {

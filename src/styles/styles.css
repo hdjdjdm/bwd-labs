@@ -24,6 +24,10 @@ body {
     transition: width 0.2s, height 0.2s;
 }
 
+.hidden {
+    display: none;
+}
+
 header {
     display: flex;
     align-items: end;
@@ -57,6 +61,12 @@ header .logo h1 {
     font-family: 'Montserrat Medium', sans-serif;
     font-size: 28px;
     transition: font-size 0.2s;
+}
+
+header .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 header button {
@@ -301,6 +311,40 @@ ul {
     opacity: 1;
 }
 
+main .smallButtons {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: flex;
+    z-index: 2;
+    gap: 10px;
+}
+
+main .smallButtons button {
+    border-radius: 50%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid var(--main-color);
+}
+
+main .smallButtons button:hover {
+    background-color: var(--main-color);
+    border: 1px solid white;
+}
+
+main .smallButtons button:hover img {
+    filter: var(--svg-color);
+}
+
+main .smallButtons button img {
+    width: 30px;
+    height: 30px;
+}
+
 main .wrap {
     display: flex;
     justify-content: center;
@@ -375,7 +419,7 @@ form {
     transition: font-size 0.2s;
 }
 
-form input[type='text'] {
+form input {
     font-family: 'Montserrat Light', sans-serif;
     font-size: 18px;
     outline: none;
@@ -607,7 +651,7 @@ form button:hover #svg {
     }
 
     main {
-        height: calc(100vh - 216px);
+        height: calc(100vh - 227px);
         align-items: normal;
     }
 

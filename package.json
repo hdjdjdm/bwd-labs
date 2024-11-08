@@ -1,26 +1,32 @@
 {
   "name": "bwd-labs",
   "version": "1.0.0",
-  "description": "**Морзюков Максим Андреевич**",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "https://github.com/hdjdjdm",
   "license": "ISC",
   "devDependencies": {
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.6.0",
+    "html-loader": "^5.1.0",
+    "html-webpack-plugin": "^5.6.3",
     "style-loader": "^4.0.0",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
   },
   "dependencies": {
-    "html-loader": "^5.1.0"
+    "@fullcalendar/core": "^6.1.15",
+    "@fullcalendar/daygrid": "^6.1.15",
+    "@fullcalendar/interaction": "^6.1.15",
+    "@fullcalendar/timegrid": "^6.1.15",
+    "fullcalendar": "^6.1.15",
+    "ical-generator": "^8.0.1"
   }
 }

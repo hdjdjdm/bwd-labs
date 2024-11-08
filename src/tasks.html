@@ -21,10 +21,16 @@
                 created by Морзюков Максим из ПрИ-21
             </span>
         </div>
-        <button id="openDialog">
-            <img src="./assets/icons/add.svg" alt="add_icon" id="svg" />
-            <span>Добавить задачу</span>
-        </button>
+        <div class="buttons">
+            <button id="exportButton">
+                <img src="./assets/icons/export.svg" alt="add_icon" id="svg" />
+                <span>Экспорт</span>
+            </button>
+            <button id="importButton">
+                <img src="./assets/icons/import.svg" alt="add_icon" id="svg" />
+                <span>Импорт</span>
+            </button>
+        </div>
     </header>
     <nav>
         <a href="./index.html">
@@ -84,30 +90,22 @@
                 </tr>
             </tbody>
         </table>
+
+        <div id="calendar" class="hidden"></div>
+
+        <div class="smallButtons">
+            <button class="changeViewButton" title="Изменить вид">
+                <img id="calendarIcon" src="./assets/icons/calendar.svg" alt="calendar_view"style="display: none" />
+                <img id="listIcon" src="./assets/icons/tasks.svg" alt="list_view" />
+            </button>
+            <button id="addTaskButton" title="Добавить задачу">
+                <img src="./assets/icons/add.svg" alt="add_icon" />
+            </button>
+        </div>
     </main>
 
-    <dialog id="taskDialog">
-        <form id="addTaskForm" method="dialog">
-            <label for="taskName">Добавить задачу</label>
-            <input 
-                type="text"
-                id="taskName"
-                name="taskName"
-                autoFocus
-                placeholder="Введите название"
-                required
-                autocomplete="off"
-            >
-            <div class="buttons">
-                <button type="submit">
-                    <img src="./assets/icons/add.svg" alt="add_icon" id="svg" />
-                    Добавить задачу
-                </button>
-                <button id="closeDialog" type="button">Закрыть</button>
-            </div>
-        </form>
-    </dialog>
-    
+    <input type="file" id="icsFileInput" style="display: none;" accept=".ics"/>
+
     <script src="bundle.js"></script>
 </body>
 

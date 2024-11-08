@@ -1,3 +1,4 @@
+import { UpdateTasksInCalendar } from "./calendar";
 import { deleteTask, drag, toggleCheck } from "./taskManager";
 
 window.onload = () => {
@@ -19,12 +20,13 @@ export function loadTasks() {
     };
 
     Object.values(taskLists).forEach(list => list.innerHTML = '<ul></ul>');
-
     tasks.forEach((task, index) => {
         const listItem = createTaskItem(task, index);
         const targetUl = taskLists[task.column].querySelector('ul');
         targetUl.appendChild(listItem);
     });
+
+    UpdateTasksInCalendar(tasks);
 }
 
 function createTaskItem(task, index) {
@@ -68,7 +70,6 @@ function createCheckbox(task, index) {
 
     return checkbox;
 }
-
 
 function createTextSpan(text) {
     const textSpan = document.createElement('span');
